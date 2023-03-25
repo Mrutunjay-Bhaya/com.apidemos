@@ -19,6 +19,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.App;
 import com.sun.accessibility.internal.resources.accessibility;
 
 import io.appium.java_client.MobileBy;
@@ -26,6 +27,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.android.nativekey.KeyEventFlag;
+import io.appium.java_client.pagefactory.bys.builder.AppiumByBuilder;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.screenrecording.BaseStartScreenRecordingOptions;
 import io.appium.java_client.touch.TapOptions;
@@ -84,7 +88,7 @@ public class appiumtest {
 						+ "new UiSelector().description(\"Splitting Touches across Views\"));"));
 		list.click();
 		WebElement list1 = driver.findElement(MobileBy.AndroidUIAutomator(
-				"new UiScrollable(new UiSelector()).scrollIntoView(" + "new UiSelector().text(\"Brin\"));"));
+				"new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brin\"));"));
 		list1.click();
 		driver.navigate().back();
 		driver.navigate().back();
@@ -120,10 +124,15 @@ public class appiumtest {
 		//Thread.sleep(1000);
 		//al.click();
 		driver.findElementByAccessibilityId("");
-	
+		driver.findElement(MobileBy.AccessibilityId(""));
 		ac.tap(TapOptions.tapOptions().withElement(ElementOption.element(al)))
         .tap(TapOptions.tapOptions().withElement(ElementOption.element(al)))
         .perform();
+	
+		
+		KeyEvent ky=new KeyEvent();
+		ky.withFlag(KeyEventFlag.FROM_SYSTEM);
+
 	}
 
 	@AfterTest
