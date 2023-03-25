@@ -59,7 +59,7 @@ public class appiumtest {
 
 	@Test
 	public void sampleTest() throws Throwable {
-//		driver.unlockDevice();
+driver.unlockDevice();
 //		driver.toggleData();
 //	
 //		//driver.toggleWifi();
