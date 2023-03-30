@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -32,6 +33,9 @@ import io.appium.java_client.android.nativekey.KeyEventFlag;
 import io.appium.java_client.pagefactory.bys.builder.AppiumByBuilder;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.screenrecording.BaseStartScreenRecordingOptions;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
@@ -40,8 +44,21 @@ import io.appium.java_client.touch.offset.PointOption;
 public class appiumtest {
 
 	private AndroidDriver<MobileElement> driver;
+	public static AppiumDriverLocalService service;
+	public static String NodeExePath = "C:\\Program Files\\nodejs\\node.exe";
+	public static String NodeJsMainPath = "C:\\Users\\MRUTUNJAY BHAYA\\AppData\\Local\\Programs\\Appium Server GUI\\resources\\app\\node_modules\\appium\\build\\lib\\main.js";
+	public static String ServerAddress = "127.0.0.1";
 
 	@BeforeTest
+	public void startAppiumServer() {
+		service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+				.usingDriverExecutable(new File(NodeExePath)).withAppiumJS(new File(NodeJsMainPath))
+				.withIPAddress(ServerAddress).withArgument(GeneralServerFlag.BASEPATH, "/wd/hub").usingPort(4723));
+System.out.println("starting appimu server");
+service.start();
+	}
+
+	@Test (priority=0)
 	public void setUp() throws MalformedURLException {
 		DesiredCapabilities dc = new DesiredCapabilities();
 		dc.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");// XCUITest for iOS device
@@ -50,9 +67,10 @@ public class appiumtest {
 		dc.setCapability(MobileCapabilityType.DEVICE_NAME, "Mi");// device name can be anything
 		dc.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 3600);
 		dc.setCapability("autoGrantPermissions", true);
-		/*   adb shell dumpsys window | find "mCurrentFocus"
-		type this command in cmd to know you apppackage and appactivity on current device
-		*/
+		/*
+		 * adb shell dumpsys window | find "mCurrentFocus" type this command in cmd to
+		 * know you apppackage and appactivity on current device
+		 */
 		dc.setCapability("appPackage", "io.appium.android.apis");
 		dc.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
 		URL remoteUrl = new URL("http://localhost:4723/wd/hub");
@@ -61,7 +79,7 @@ public class appiumtest {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 
-	@Test
+	@Test (priority=1)
 	public void sampleTest() throws Throwable {
 //		driver.unlockDevice();
 //		driver.toggleData();
@@ -87,8 +105,8 @@ public class appiumtest {
 				.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
 						+ "new UiSelector().description(\"Splitting Touches across Views\"));"));
 		list.click();
-		WebElement list1 = driver.findElement(MobileBy.AndroidUIAutomator(
-				"new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brin\"));"));
+		WebElement list1 = driver.findElement(
+				MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Brin\"));"));
 		list1.click();
 		driver.navigate().back();
 		driver.navigate().back();
@@ -120,17 +138,15 @@ public class appiumtest {
 		driver.findElementsById("android:id/text1").get(8).click();
 		driver.findElementsById("android:id/text1").get(10).click();
 		WebElement al = driver.findElementsById("android:id/text1").get(0);
-		//al.click();
-		//Thread.sleep(1000);
-		//al.click();
+		// al.click();
+		// Thread.sleep(1000);
+		// al.click();
 		driver.findElementByAccessibilityId("");
 		driver.findElement(MobileBy.AccessibilityId(""));
 		ac.tap(TapOptions.tapOptions().withElement(ElementOption.element(al)))
-        .tap(TapOptions.tapOptions().withElement(ElementOption.element(al)))
-        .perform();
-	
-		
-		KeyEvent ky=new KeyEvent();
+				.tap(TapOptions.tapOptions().withElement(ElementOption.element(al))).perform();
+
+		KeyEvent ky = new KeyEvent();
 		ky.withFlag(KeyEventFlag.FROM_SYSTEM);
 
 	}
