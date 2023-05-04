@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="utilities.ExtentReporterNG" />
+		<listener class-name="utilities.Screenshot" />
+		<listener class-name="utilities.RetryListener" />
+	</listeners>
+	<test thread-count="5" name="Test">
+		<!-- <groups>
+			<define name="AllTest">
+				<include name="smoke"></include>
+				<include name="sanity"></include>
+			</define>
+			<run>
+				<include name="AllTest"></include>
+			</run>
+		</groups> -->
+		<classes>
+			<class name="com.testcase.HomePageValidationTestcase" />
+			<class name="com.testcase.AnimationTestCase" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

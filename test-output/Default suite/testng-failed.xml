@@ -5,7 +5,7 @@
     <classes>
       <class name="appium.appiumtest">
         <methods>
-          <include name="sampleTest"/>
+          <include name="startAppiumServer"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
