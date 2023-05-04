@@ -7,7 +7,7 @@
 		<listener class-name="utilities.RetryListener" />
 	</listeners>
 	<test thread-count="5" name="Test">
-		<groups>
+		<!-- <groups>
 			<define name="AllTest">
 				<include name="smoke"></include>
 				<include name="sanity"></include>
@@ -15,7 +15,7 @@
 			<run>
 				<include name="AllTest"></include>
 			</run>
-		</groups>
+		</groups> -->
 		<classes>
 			<class name="com.testcase.HomePageValidationTestcase" />
 			<class name="com.testcase.AnimationTestCase" />
