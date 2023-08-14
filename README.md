@@ -6,5 +6,5 @@ If someone want to run mobile application testing on there system, there are som
 3. need Appium server for window/mac installed on your system
 4. need Eclipse or other IDE
 5. need Real device for run mobile application
-6. USB debugging should be ON in reale device
+6. USB debugging should be ON in real device
 After all set you need to change some desiredcapabilities as per you mobile device
