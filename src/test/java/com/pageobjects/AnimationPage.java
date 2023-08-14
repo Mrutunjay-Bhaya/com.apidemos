@@ -8,12 +8,12 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class AnimationPage {
  public AnimationPage(AppiumDriver<MobileElement>driver) {
-	 super();
+	super();
 	 PageFactory.initElements(new AppiumFieldDecorator(driver), this);
  }
 	    @FindBy(id = "android:id/action_bar")
 		private MobileElement apidemos;
-	  @FindBy(xpath = "//android.widget.TextView[@content-desc='Animation']")
+	    @FindBy(xpath = "//android.widget.TextView[@content-desc='Animation']")
 		private MobileElement animation;
 		@FindBy(xpath = "//android.widget.TextView[@content-desc='Bouncing Balls']")
 		private MobileElement bouncingballs;
@@ -55,8 +55,6 @@ public class AnimationPage {
 		private MobileElement Events;
 		@FindBy(xpath = "//android.widget.Button[@content-desc='Play']")
 		private MobileElement eventplaybtn;
-		
-		
 		@FindBy(xpath = "//android.widget.TextView[@content-desc='Hide-Show Animations']")
 		private MobileElement HideShowAnimations;
 		@FindBy(xpath = "//android.widget.CheckBox[@content-desc='Custom Animations']")

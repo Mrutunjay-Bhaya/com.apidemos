@@ -3,6 +3,7 @@ package com.testcase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.baseclass.BaseClass;
 import com.pageobjects.AnimationPage;
@@ -15,7 +16,7 @@ public class AnimationTestCase extends BaseClass {
 	AppiumDriverUtility au;
 	HomePage hp;
 	Logger logger = LogManager.getLogger(this.getClass());
-
+@Parameters
 	@Test(priority = 1, groups = { "sanity" })
 	public void validateBouncingBalls() {
 
@@ -110,7 +111,7 @@ public class AnimationTestCase extends BaseClass {
 		hp = new HomePage(driver);
 		hp.getViews().click();
 		String s = "\"WebView\"";
-		au.scrollIntoView(driver, s).click();
+		au.scrollIntoElement(driver, s).click();
 		au.back(driver);
 
 	}
