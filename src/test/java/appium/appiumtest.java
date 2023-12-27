@@ -84,6 +84,9 @@ public class appiumtest {
 		 * adb shell dumpsys window | find "mCurrentFocus" type this command in cmd to
 		 * know you apppackage and appactivity on current device
 		 */
+          // on mac system
+		//adb shell dumpsys window | grep -E "mCurrentFocus"
+		
 		// dc.setCapability("appPackage", "io.appium.android.apis");
 		// dc.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
 		URL remoteUrl = new URL("http://localhost:4723/wd/hub");
