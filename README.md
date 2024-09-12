@@ -8,3 +8,13 @@ If someone want to run mobile application testing on there system, there are som
 5. need Real device for run mobile application
 6. USB debugging should be ON in reale device
 After all set you need to change some desiredcapabilities as per you mobile device
+
+Command to install appium-
+npm install -g appium
+
+
+Command to install appium driver:-
+
+For Android- appium driver install uiautomator2
+For iOS- appium driver install xcuitest
+
