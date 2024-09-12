@@ -14,7 +14,7 @@ npm install -g appium
 
 
 Command to install appium driver:-
-
+appium driver list, to check the driver list
 For Android- appium driver install uiautomator2
 For iOS- appium driver install xcuitest
 
